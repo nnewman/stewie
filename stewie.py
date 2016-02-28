@@ -1,6 +1,6 @@
 import requests
 
-import yelp
+from plugins import yelp
 import urbandict
 
 import config
