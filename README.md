@@ -2,7 +2,7 @@
 
 _**VERY ALPHA**_
 
-A minimal bot for Mattermost written in Python and inspired by Slack's Stewie.
+A minimal bot for Mattermost written in Python and inspired by Slack's Stuart.
 
 Usage:
 
