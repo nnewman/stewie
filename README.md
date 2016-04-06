@@ -6,7 +6,7 @@ A minimal bot for Mattermost written in Python and inspired by Slack's Stuart.
 
 Usage:
 
-Add a new slash command for Stewie using Mattermost. Some debigging will be necessary as you will need your team ID, which Mattermost doesn't seem to expose in the UI....
+Add a new slash command for Stewie using Mattermost. Some debugging will be necessary as you will need your team ID, which Mattermost doesn't seem to expose in the UI....
 
 After installing, use `/stewie help` to see a list of available commands.
 
