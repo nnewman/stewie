@@ -1,4 +1,4 @@
-# ![](https://s3.amazonaws.com/mm-resources-01/stewie.jpg) _Stewie_
+# ![](https://s3.amazonaws.com/mm-resources-01/stewie_small.png) _Stewie_
 
 Stewie is our bot with lots of useful and non-useful helper functions.
 "help" - Prints out this help message
