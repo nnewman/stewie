@@ -55,16 +55,6 @@ class Stewie(object):
             return "![]({})".format(response['images']['fixed_height']['url'])
 
     @staticmethod
-    def cramit(*args):
-        payload = {
-            'ids': 'xTiTnz3X5xhG9ybqJa',
-            'api_key': config.GIPHY_KEY
-        }
-        response = requests.get(config.GIPHY_ENDPOINT, params=payload)
-        response = response.json()['data'][0]
-        return "![]({})".format(response['images']['fixed_height']['url'])
-
-    @staticmethod
     def butts(*args):
         payload = {
             'ids': 'OCu7zWojqFA1W',

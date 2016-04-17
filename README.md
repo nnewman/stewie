@@ -1,14 +1,20 @@
 # Stewie
 
-_**VERY ALPHA**_
-
-A minimal bot for Mattermost written in Python and inspired by Slack's Stuart.
+A minimal, extendable bot for Mattermost written in Python and inspired by Slack's Stuart.
 
 Usage:
 
 Add a new slash command for Stewie using Mattermost. Some debugging will be necessary as you will need your team ID, which Mattermost doesn't seem to expose in the UI....
 
 After installing, use `/stewie help` to see a list of available commands.
+
+### Extensions
+
+Sometimes we may want to extend Stewie without getting in the way of core functionality. Following the example
+in `stewie.py`, you can write extension functions in a file within the extensions folder, and then add a config
+key called `EXTENSIONS` which references your new module. Stewie will pick functions from your extensions first,
+so it's possible, and encouraged, to use this mechanism to override core functionality. The hope here is that
+everyone can make Stewie their own, without the need to fork him. See `extensions.py.example` for more.
 
 ### Guidelines for Contribution
 

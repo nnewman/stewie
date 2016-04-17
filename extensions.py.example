@@ -1,0 +1,39 @@
+# This is a file showing how to use extensions to add functionality to Stewie
+#
+# Extensions must be written in Python, and must be top-level functions in the
+# extension file. The extension file must also be specified using `EXTENSION`
+# in config.py. Specify the extension as a string, i.e. `EXTENSION=example`,
+# referencing the file as a python object and not a file.
+#
+# With this it is also possible to import installed modules. Be sure to avoid
+# naming your extensions such that they shadow other Python modules. Doing so
+# may cause unexpected errors and behavior
+#
+# All extensions must specify a list called `force_noisy`, which contains a
+# set of strings referencing functions which we will force to post in-channel.
+# This exists so that we can alert other users in the event your function is
+# doing something they should know about.
+#
+# All functions should return a string response, which will be the response
+# returned by the command in MatterMost.
+#
+# It is OK to let exceptions bubble up and use Stewie's global handler. This
+# will post the short error description ephemerally as Stewie'e response.
+#
+
+import requests
+
+import config
+
+# This key must be included
+force_noisy = []
+
+# Our example function
+def special_giphy(*args):
+    payload = {
+        'ids': 'some_key',
+        'api_key': config.GIPHY_KEY
+    }
+    response = requests.get(config.GIPHY_ENDPOINT, params=payload)
+    response = response.json()['data'][0]
+    return "![]({})".format(response['images']['fixed_height']['url'])
