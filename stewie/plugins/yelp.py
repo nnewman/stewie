@@ -9,8 +9,9 @@ import argparse
 import json
 import pprint
 import sys
-import urllib
-import urllib2
+import urllib.request
+import urllib.parse
+import urllib.error
 
 import oauth2
 
@@ -46,7 +47,7 @@ def request(host, path, url_params=None):
         urllib2.HTTPError: An error occurs from the HTTP request.
     """
     url_params = url_params or {}
-    url = 'https://{0}{1}?'.format(host, urllib.quote(path.encode('utf8')))
+    url = 'https://{0}{1}?'.format(host, urllib.parse.quote(path.encode('utf8')))
 
     consumer = oauth2.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
     oauth_request = oauth2.Request(
@@ -65,11 +66,11 @@ def request(host, path, url_params=None):
             oauth2.SignatureMethod_HMAC_SHA1(), consumer, token)
     signed_url = oauth_request.to_url()
 
-    print u'Querying {0} ...'.format(url)
+    print(('Querying {0} ...'.format(url)))
 
-    conn = urllib2.urlopen(signed_url, None)
+    conn = urllib.request.urlopen(signed_url, None)
     try:
-        response = json.loads(conn.read())
+        response = json.loads(conn.read().decode('utf-8'))
     finally:
         conn.close()
 
@@ -121,17 +122,17 @@ def query_api(term, location):
     businesses = response.get('businesses')
 
     if not businesses:
-        print u'No businesses for {0} in {1} found.'.format(term, location)
+        print(('No businesses for {0} in {1} found.'.format(term, location)))
         return
 
     business_id = businesses[0]['id']
 
-    print u'{0} businesses found, querying business info ' \
+    print(('{0} businesses found, querying business info '
           'for the top result "{1}" ...'.format(
-            len(businesses), business_id)
+            len(businesses), business_id)))
     response = get_business(business_id)
 
-    print u'Result for business "{0}" found:'.format(business_id)
+    print(('Result for business "{0}" found:'.format(business_id)))
     pprint.pprint(response, indent=2)
 
 
@@ -148,9 +149,10 @@ def main():
 
     try:
         query_api(input_values.term, input_values.location)
-    except urllib2.HTTPError as error:
+    except urllib.error.HTTPError as error:
         sys.exit(
-                'Encountered HTTP error {0}. Abort program.'.format(error.code))
+                'Encountered HTTP error {0}. Abort '
+                'program.'.format(error.code))
 
 
 if __name__ == '__main__':

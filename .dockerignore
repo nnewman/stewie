@@ -1,8 +1,7 @@
-config.py
-*.pyc
 .DS_Store
+.git
+.pyc
 .idea
-stewie.jpg
 build
 dist
 extensions

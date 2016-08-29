@@ -1,11 +1,15 @@
 import importlib
 import os
+import sys
 
 from flask import Flask, send_file
 from flask_slack import Slack
 
-import config
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from stewie import Stewie, command_processor
+
+import config
 
 app = Flask(__name__)
 slack = Slack(app)
@@ -67,5 +71,5 @@ def stewie(**kwargs):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 8043))
     app.run(host='0.0.0.0', port=port, debug=True)

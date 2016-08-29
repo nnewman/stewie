@@ -3,6 +3,7 @@ Flask==0.10.1
 Flask-Slack==0.1.5
 httplib2==0.9.2
 itsdangerous==0.24
+gunicorn==19.6.0
 Jinja2==2.8
 MarkupSafe==0.23
 oauth2==1.9.0.post1

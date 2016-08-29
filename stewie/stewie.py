@@ -1,7 +1,9 @@
+import os
+import sys
 import requests
 
-from plugins import yelp
 import urbandict
+from plugins import yelp
 
 import config
 
@@ -12,11 +14,6 @@ def command_processor(text):
     return words[0], words[1:]
 
 class Stewie(object):
-
-    @staticmethod
-    def help(*args):
-        with open('stewie.md') as f:
-            return f.read()
 
     @staticmethod
     def joke(*args):
@@ -63,3 +60,32 @@ class Stewie(object):
         response = requests.get(config.GIPHY_ENDPOINT, params=payload)
         response = response.json()['data'][0]
         return "![]({})".format(response['images']['fixed_height']['url'])
+
+    @staticmethod
+    def help(*args):
+        help_text = """
+# ![](https://s3.amazonaws.com/mm-resources-01/stewie_small.png)
+_Stewie_
+
+Stewie is our bot with lots of useful and non-useful helper
+functions.
+
+"help" - Prints out this help message
+
+---
+#### Post to Channel
+
+All commands are ephemeral by default. To post Stewie's response
+to the channel use a `!` between `/stewie` and your command. Some
+commands are forced to post to the channel.
+
+#### Commands
+
+* `help` - List of commands
+* `food [query]` - Use Yelp to find a nearby eatery
+* `joke` - Find a random joke
+* `define [query]` - Uses UrbanDictionary to define a word
+* `gif [query]` - Searches Giphy for your query
+* `butts` - Hold on to your butts... deploy going up
+        """
+        return help_text
