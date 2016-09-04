@@ -8,11 +8,10 @@ The easiest way to install is using docker. You will need to create and mount
 a `config.py` file for which an example template is in the `stewie` directory.
 
 ```bash
-$ git clone https://github.com/nnewman/stewie.git
-$ cd stewie/stewie && cp config.template.py config.py
+$ curl https://raw.githubusercontent.com/nnewman/stewie/master/stewie/config.template.py > config.py
 $ vim config.py
 $ docker pull nnewman/stewie:latest
-$ docker run -t -v "config.py:/opt/stewie/config.py:ro" -p "8043:8043" nnewman/stewie:latest sh -c "gunicorn -b 0.0.0.0:8043 stewie.server:app"
+$ docker run -t -v "<current path>y:/opt/stewie" -p "8043:8043" nnewman/stewie:latest sh -c "gunicorn -b 0.0.0.0:8043 stewie.server:app"
 ```
 
 ### Usage
