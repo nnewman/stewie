@@ -5,11 +5,13 @@ import requests
 import urbandict
 
 try:
-    from .plugins import yelp
+    from stewie.plugins import yelp
+    import stewie.config
 except ImportError:
     from plugins import yelp
+    import config
+# from stewie.plugins import yelp
 
-import config
 
 def command_processor(text):
     words = text.split(' ')
