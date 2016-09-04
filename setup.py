@@ -13,9 +13,5 @@ setup(name='stewie',
       author='Neil Newman',
       url='https://github.com/nnewman/stewie',
       packages=['stewie'],
-      package_data={
-            'stewie': ['stewie.md']
-      },
-      include_package_data=True,
       install_requires=reqs,
       )

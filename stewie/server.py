@@ -7,7 +7,10 @@ from flask_slack import Slack
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from stewie import Stewie, command_processor
+try:
+    from .stewie import Stewie, command_processor
+except SystemError:
+    from stewie import Stewie, command_processor
 
 import config
 

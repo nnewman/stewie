@@ -1,11 +1,10 @@
 FROM python:3.5-alpine
 
-RUN mkdir -p /opt/stewie
-ADD . /opt/stewie
+RUN apk --update add git
 
-RUN cd /opt/stewie && python3 setup.py install
+RUN pip install git+https://github.com/nnewman/stewie.git@master
 
-WORKDIR /opt/stewie/stewie
+WORKDIR /opt/stewie
 
 USER nobody
-EXPOSE 5001 8043
+EXPOSE 8043

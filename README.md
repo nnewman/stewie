@@ -2,7 +2,20 @@
 
 A minimal, extendable bot for Mattermost written in Python and inspired by Slack's Stuart.
 
-Usage:
+### Installation
+
+The easiest way to install is using docker. You will need to create and mount 
+a `config.py` file for which an example template is in the `stewie` directory.
+
+```bash
+$ git clone https://github.com/nnewman/stewie.git
+$ cd stewie/stewie && cp config.template.py config.py
+$ vim config.py
+$ docker pull nnewman/stewie:latest
+$ docker run -t -v "config.py:/opt/stewie/config.py:ro" -p "8043:8043" nnewman/stewie:latest sh -c "gunicorn -b 0.0.0.0:8043 stewie.server:app"
+```
+
+### Usage
 
 Add a new slash command for Stewie using Mattermost. Some debugging will be necessary as you will need your team ID, which Mattermost doesn't seem to expose in the UI....
 

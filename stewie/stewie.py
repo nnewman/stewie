@@ -3,7 +3,11 @@ import sys
 import requests
 
 import urbandict
-from plugins import yelp
+
+try:
+    from stewie.plugins import yelp
+except ImportError:
+    from plugins import yelp
 
 import config
 
