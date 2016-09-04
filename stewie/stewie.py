@@ -5,7 +5,7 @@ import requests
 import urbandict
 
 try:
-    from stewie.plugins import yelp
+    from .plugins import yelp
 except ImportError:
     from plugins import yelp
 
