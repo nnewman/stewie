@@ -5,7 +5,7 @@ import sys
 from flask import Flask, send_file
 from flask_slack import Slack
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.getenv('CONFIG_PATH'))
 
 try:
     from .stewie import Stewie, command_processor

@@ -6,11 +6,10 @@ import urbandict
 
 try:
     from stewie.plugins import yelp
-    import stewie.config
 except ImportError:
     from plugins import yelp
-    import config
-# from stewie.plugins import yelp
+
+import config
 
 
 def command_processor(text):
