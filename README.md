@@ -40,3 +40,4 @@ My requirements are, however, that any additions fit into the current design sch
 * At the moment, no separate, non-python components will be accepted. I'm looking to add some persistent data in the future, but I'm still thinking of the best way
 * Keep everything relatively clean, and work-friendly
 * Productivity-friendly features will get higher priority
+
